@@ -73,14 +73,19 @@ namespace Quiplash_Question_Editor
 
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            newQuestion createWindow = new newQuestion(questionPath);
-            var result = createWindow.ShowDialog();
-            if (result == DialogResult.OK)
+            if (questionJetFilename != "")
             {
-                questionIndex.content.Add(createWindow.qJetContent);
-                ListQuestionJet.Items.Add(createWindow.qJetContent.prompt);
-                saveQuestionJet();
+                newQuestion createWindow = new newQuestion(questionPath);
+                var result = createWindow.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    questionIndex.content.Add(createWindow.qJetContent);
+                    ListQuestionJet.Items.Add(createWindow.qJetContent.prompt);
+                    saveQuestionJet();
+                }
             }
+            else
+                open();
         }
 
         private void open()
@@ -98,6 +103,7 @@ namespace Quiplash_Question_Editor
                 }
 
                 questionIndex = JsonConvert.DeserializeObject<questionJet>(questionJetFileContents);
+                ListQuestionJet.Items.Clear();
 
                 for (int i = 0; i < questionIndex.content.Count; i++)
                 {
@@ -109,7 +115,7 @@ namespace Quiplash_Question_Editor
             }
             catch
             {
-                //oh well
+                questionJetFilename = questionPath = "";
             }
         }
 
@@ -127,6 +133,25 @@ namespace Quiplash_Question_Editor
         {
             AboutBox about = new AboutBox();
             about.ShowDialog();
+        }
+
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FindQuestion finddialog = new FindQuestion();
+            var result = finddialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string search = finddialog.findString;
+                bool searching = true;
+                for(int i = 0; (searching && i < ListQuestionJet.Items.Count); i++)
+                {
+                    if(ListQuestionJet.Items[i].ToString().Contains(search))
+                    {
+                        ListQuestionJet.SelectedIndex = i;
+                        searching = false;
+                    }
+                }
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -100,5 +101,25 @@ namespace Quiplash_Question_Editor
             }
         }
         #endregion
+
+        private void AboutBox_Load(object sender, EventArgs e)
+        {
+            LinkLabel.Link webpagelink = new LinkLabel.Link();
+            LinkLabel.Link twitchlink = new LinkLabel.Link();
+            webpagelink.LinkData = "https://github.com/CoryZ40/Quiplash-Question-Editor";
+            twitchlink.LinkData = "https://www.twitch.tv/whoisworm/profile";
+            lblWebpage.Links.Add(webpagelink);
+            lblTwitchLink.Links.Add(twitchlink);
+        }
+
+        private void lblWebpage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(e.Link.LinkData as string);
+        }
+
+        private void lblTwitchLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(e.Link.LinkData as string);
+        }
     }
 }

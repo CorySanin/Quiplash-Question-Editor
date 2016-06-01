@@ -16,10 +16,10 @@ F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Edi
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\bin\Debug\Quiplash Question Editor.pdb
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\bin\Debug\Newtonsoft.Json.dll
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\bin\Debug\Newtonsoft.Json.xml
-F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Debug\Quiplash Question Editor.csprojResolveAssemblyReference.cache
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Debug\Quiplash_Question_Editor.AboutBox.resources
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Debug\Quiplash_Question_Editor.editQuestion.resources
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Debug\Quiplash_Question_Editor.Form1.resources
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Debug\Quiplash_Question_Editor.newQuestion.resources
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Debug\Quiplash_Question_Editor.Properties.Resources.resources
 F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Debug\Quiplash Question Editor.csproj.GenerateResource.Cache
+f:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Debug\Quiplash_Question_Editor.FindQuestion.resources

@@ -43,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.chkbxExplicit = new System.Windows.Forms.CheckBox();
+            this.lblPromptAudioFName = new System.Windows.Forms.Label();
+            this.lblJokeAudioFName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -194,6 +196,24 @@
             this.chkbxExplicit.Text = "Explicit";
             this.chkbxExplicit.UseVisualStyleBackColor = true;
             // 
+            // lblPromptAudioFName
+            // 
+            this.lblPromptAudioFName.AutoSize = true;
+            this.lblPromptAudioFName.Location = new System.Drawing.Point(223, 92);
+            this.lblPromptAudioFName.Name = "lblPromptAudioFName";
+            this.lblPromptAudioFName.Size = new System.Drawing.Size(85, 13);
+            this.lblPromptAudioFName.TabIndex = 32;
+            this.lblPromptAudioFName.Text = "No File Selected";
+            // 
+            // lblJokeAudioFName
+            // 
+            this.lblJokeAudioFName.AutoSize = true;
+            this.lblJokeAudioFName.Location = new System.Drawing.Point(223, 196);
+            this.lblJokeAudioFName.Name = "lblJokeAudioFName";
+            this.lblJokeAudioFName.Size = new System.Drawing.Size(85, 13);
+            this.lblJokeAudioFName.TabIndex = 33;
+            this.lblJokeAudioFName.Text = "No File Selected";
+            // 
             // newQuestion
             // 
             this.AcceptButton = this.btnSave;
@@ -201,6 +221,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(458, 262);
+            this.Controls.Add(this.lblJokeAudioFName);
+            this.Controls.Add(this.lblPromptAudioFName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnReplaceKeywordMP3);
             this.Controls.Add(this.label5);
@@ -240,5 +262,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox chkbxExplicit;
+        private System.Windows.Forms.Label lblPromptAudioFName;
+        private System.Windows.Forms.Label lblJokeAudioFName;
     }
 }

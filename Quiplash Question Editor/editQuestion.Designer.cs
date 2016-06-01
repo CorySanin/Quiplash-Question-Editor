@@ -46,6 +46,8 @@
             this.btnReplaceKeywordMP3 = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.chkbxMirrorPrompts = new System.Windows.Forms.CheckBox();
+            this.lblPromptAudioFName = new System.Windows.Forms.Label();
+            this.lblJokeAudioFName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chkbxExplicit
@@ -226,6 +228,24 @@
             this.chkbxMirrorPrompts.Text = "Make prompts same";
             this.chkbxMirrorPrompts.UseVisualStyleBackColor = true;
             // 
+            // lblPromptAudioFName
+            // 
+            this.lblPromptAudioFName.AutoSize = true;
+            this.lblPromptAudioFName.Location = new System.Drawing.Point(223, 141);
+            this.lblPromptAudioFName.Name = "lblPromptAudioFName";
+            this.lblPromptAudioFName.Size = new System.Drawing.Size(85, 13);
+            this.lblPromptAudioFName.TabIndex = 17;
+            this.lblPromptAudioFName.Text = "No File Selected";
+            // 
+            // lblJokeAudioFName
+            // 
+            this.lblJokeAudioFName.AutoSize = true;
+            this.lblJokeAudioFName.Location = new System.Drawing.Point(223, 245);
+            this.lblJokeAudioFName.Name = "lblJokeAudioFName";
+            this.lblJokeAudioFName.Size = new System.Drawing.Size(85, 13);
+            this.lblJokeAudioFName.TabIndex = 18;
+            this.lblJokeAudioFName.Text = "No File Selected";
+            // 
             // editQuestion
             // 
             this.AcceptButton = this.btnSave;
@@ -233,6 +253,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(436, 312);
+            this.Controls.Add(this.lblJokeAudioFName);
+            this.Controls.Add(this.lblPromptAudioFName);
             this.Controls.Add(this.chkbxMirrorPrompts);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnReplaceKeywordMP3);
@@ -279,5 +301,7 @@
         private System.Windows.Forms.Button btnReplaceKeywordMP3;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox chkbxMirrorPrompts;
+        private System.Windows.Forms.Label lblPromptAudioFName;
+        private System.Windows.Forms.Label lblJokeAudioFName;
     }
 }

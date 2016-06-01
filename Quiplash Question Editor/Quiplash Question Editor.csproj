@@ -87,6 +87,12 @@
     <Compile Include="editQuestion.Designer.cs">
       <DependentUpon>editQuestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FindQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindQuestion.Designer.cs">
+      <DependentUpon>FindQuestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editQuestion.resx">
       <DependentUpon>editQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindQuestion.resx">
+      <DependentUpon>FindQuestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -158,7 +167,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd $(SolutionDir)packages\ILRepack.2.0.10\tools
-ILRepack.exe /ndebug /out:"$(TargetDir)..\Release\QuipEdit.exe" "$(TargetPath)" "$(TargetDir)Newtonsoft.Json.dll"</PostBuildEvent>
+ILRepack.exe /ndebug /out:"$(TargetDir)..\Release\QuipEdit.exe" "$(TargetPath)" "$(TargetDir)Newtonsoft.Json.dll"
+IF "$(ConfigurationName)"=="Release" copy "$(TargetDir)..\Release\QuipEdit.exe" "$(SolutionDir)Build\QuipEdit.exe"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

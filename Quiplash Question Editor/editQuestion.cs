@@ -141,14 +141,22 @@ namespace Quiplash_Question_Editor
 
         private void btnReplacePromptMP3_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            NewPromptAudio = openFileDialog1.FileName;
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                NewPromptAudio = openFileDialog1.FileName;
+                lblPromptAudioFName.Text = openFileDialog1.SafeFileName;
+            }
         }
 
         private void btnReplaceKeywordMP3_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            NewKeywordAudio = openFileDialog1.FileName;
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                NewKeywordAudio = openFileDialog1.FileName;
+                lblJokeAudioFName.Text = openFileDialog1.SafeFileName;
+            }
         }
 
         private void chkbxJoke_CheckedChanged(object sender, EventArgs e)
