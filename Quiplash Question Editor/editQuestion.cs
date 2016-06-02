@@ -1,16 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Quiplash_Question_Editor
 {
+    /// <summary>
+    /// Form for editing an existing question
+    /// </summary>
     public partial class editQuestion : Form
     {
         public Content qJetContent;
@@ -28,6 +25,11 @@ namespace Quiplash_Question_Editor
         private string NewPromptAudio = "";
         private string NewKeywordAudio = "";
 
+        /// <summary>
+        /// Constructor gets information about the selected question
+        /// </summary>
+        /// <param name="c">The Content info from Question.jet about this question</param>
+        /// <param name="p">Question.jet containing directory</param>
         public editQuestion(Content c, string p)
         {
             InitializeComponent();
@@ -60,6 +62,10 @@ namespace Quiplash_Question_Editor
             chkbxMirrorPrompts.Checked = (txtDataJetPrompt.Text == txtQuestionJetPrompt.Text);
         }
 
+        /// <summary>
+        /// Goes through the question's Data.jet to find the indexes for the difference types of variables
+        /// There might be a better way of doing this, but I believe my way isn't bad
+        /// </summary>
         private void getFieldIndexes()
         {
             for (int i = 0; i < questionData.fields.Count; i++)
@@ -84,6 +90,9 @@ namespace Quiplash_Question_Editor
             }
         }
 
+        /// <summary>
+        /// Make keyword-joke related fields enabled or disabled, depending on the state of chkbxJoke
+        /// </summary>
         private void toggleFormAvail()
         {
             if (chkbxJoke.Checked)
@@ -100,6 +109,12 @@ namespace Quiplash_Question_Editor
             }
         }
 
+        /// <summary>
+        /// Makes the necessary changes to Data.jet, moves audio files into place,
+        /// and updates qJetContent so that the main form can update Question.jet
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             qJetContent.x = chkbxExplicit.Checked;
@@ -131,6 +146,11 @@ namespace Quiplash_Question_Editor
             this.Close();
         }
 
+        /// <summary>
+        /// Takes a bool value and spits out "true" or "false" (as a string)
+        /// </summary>
+        /// <param name="b">a boolean value</param>
+        /// <returns>Wheter the input was "true" or "false" (as a string)</returns>
         private string boolText(bool b)
         {
             if (b)
@@ -139,6 +159,12 @@ namespace Quiplash_Question_Editor
                 return "false";
         }
 
+        /// <summary>
+        /// Opens a dialog for replacement prompt audio.
+        /// If the user selects something, it stores the filename as a variable for later.
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void btnReplacePromptMP3_Click(object sender, EventArgs e)
         {
             var result = openFileDialog1.ShowDialog();
@@ -149,6 +175,12 @@ namespace Quiplash_Question_Editor
             }
         }
 
+        /// <summary>
+        /// Opens a dialog for replacement keyword joke audio.
+        /// If the user selects something, it stores the filename as a variable for later.
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void btnReplaceKeywordMP3_Click(object sender, EventArgs e)
         {
             var result = openFileDialog1.ShowDialog();
@@ -159,28 +191,43 @@ namespace Quiplash_Question_Editor
             }
         }
 
+        /// <summary>
+        /// Make sure the keyword-joke fields are correctly enabled or disabled
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void chkbxJoke_CheckedChanged(object sender, EventArgs e)
         {
             toggleFormAvail();
         }
 
+        /// <summary>
+        /// Cancels all actions and closes the form
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void editQuestion_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Update the other textbox if chkbxMirrorPrompts is checked
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void txtQuestionJetPrompt_TextChanged(object sender, EventArgs e)
         {
             if (chkbxMirrorPrompts.Checked)
                 txtDataJetPrompt.Text = txtQuestionJetPrompt.Text;
         }
 
+        /// <summary>
+        /// Update the other textbox if chkbxMirrorPrompts is checked
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void txtDataJetPrompt_TextChanged(object sender, EventArgs e)
         {
             if (chkbxMirrorPrompts.Checked)

@@ -23,6 +23,9 @@ namespace Quiplash_Question_Editor
         public string n { get; set; }
     }
 
+    /// <summary>
+    /// The root class
+    /// </summary>
     public class dataJet
     {
         public List<Field> fields { get; set; }

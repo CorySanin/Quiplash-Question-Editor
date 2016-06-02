@@ -102,6 +102,11 @@ namespace Quiplash_Question_Editor
         }
         #endregion
 
+        /// <summary>
+        /// After form load, prepare links
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void AboutBox_Load(object sender, EventArgs e)
         {
             LinkLabel.Link webpagelink = new LinkLabel.Link();
@@ -112,11 +117,21 @@ namespace Quiplash_Question_Editor
             lblTwitchLink.Links.Add(twitchlink);
         }
 
+        /// <summary>
+        /// Take the user to the GitHub page for this project
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void lblWebpage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData as string);
         }
 
+        /// <summary>
+        /// Take the user to Cory's Twitch profile
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void lblTwitchLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData as string);

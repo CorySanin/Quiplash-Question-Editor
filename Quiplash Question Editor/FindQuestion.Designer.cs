@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtFindText = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnFindNext = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnFind
@@ -40,37 +41,48 @@
             this.btnFind.Location = new System.Drawing.Point(243, 101);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 0;
-            this.btnFind.Text = "&Find";
+            this.btnFind.TabIndex = 4;
+            this.btnFind.Text = "&Find First";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 42);
+            this.label1.Location = new System.Drawing.Point(12, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(161, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Type in all or part of the question";
             // 
             // txtFindText
             // 
-            this.txtFindText.Location = new System.Drawing.Point(12, 58);
+            this.txtFindText.Location = new System.Drawing.Point(15, 51);
             this.txtFindText.Name = "txtFindText";
             this.txtFindText.Size = new System.Drawing.Size(306, 20);
-            this.txtFindText.TabIndex = 2;
+            this.txtFindText.TabIndex = 1;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(162, 101);
+            this.btnCancel.Location = new System.Drawing.Point(81, 101);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnFindNext
+            // 
+            this.btnFindNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFindNext.Location = new System.Drawing.Point(162, 101);
+            this.btnFindNext.Name = "btnFindNext";
+            this.btnFindNext.Size = new System.Drawing.Size(75, 23);
+            this.btnFindNext.TabIndex = 3;
+            this.btnFindNext.Text = "Find &Next";
+            this.btnFindNext.UseVisualStyleBackColor = true;
+            this.btnFindNext.Click += new System.EventHandler(this.btnFindNext_Click);
             // 
             // FindQuestion
             // 
@@ -79,6 +91,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(330, 136);
+            this.Controls.Add(this.btnFindNext);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtFindText);
             this.Controls.Add(this.label1);
@@ -98,5 +111,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFindText;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnFindNext;
     }
 }

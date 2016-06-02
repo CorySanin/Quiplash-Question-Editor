@@ -275,7 +275,6 @@
             this.Name = "editQuestion";
             this.ShowIcon = false;
             this.Text = "Edit Question";
-            this.Load += new System.EventHandler(this.editQuestion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

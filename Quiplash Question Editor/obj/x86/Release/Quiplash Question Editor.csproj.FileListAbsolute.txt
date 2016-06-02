@@ -11,4 +11,3 @@ f:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Edi
 f:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Release\Quiplash Question Editor.exe
 f:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Release\Quiplash Question Editor.pdb
 f:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Release\Quiplash_Question_Editor.FindQuestion.resources
-f:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\obj\x86\Release\Quiplash Question Editor.csprojResolveAssemblyReference.cache

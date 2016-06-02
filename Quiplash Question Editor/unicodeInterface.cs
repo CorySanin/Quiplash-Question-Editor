@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Quiplash_Question_Editor
+﻿namespace Quiplash_Question_Editor
 {
     static class unicodeInterface
     {
