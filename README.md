@@ -6,4 +6,6 @@ Don't worry about messing up your Question.jet file, as Quiplash Question Editor
 
 ## [Latest Release](https://github.com/CoryZ40/Quiplash-Question-Editor/releases) ##
 
+![capture](https://cloud.githubusercontent.com/assets/2897351/15756006/eb274550-28c4-11e6-99d6-60dff48e36b5.PNG)
+
 Like my work? I'd really appreciate it if you would [donate](paypal.me/Heckie) ♥
