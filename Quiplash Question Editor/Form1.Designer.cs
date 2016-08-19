@@ -183,6 +183,7 @@
             this.Controls.Add(this.BtnNew);
             this.Controls.Add(this.ListQuestionJet);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(275, 200);
             this.Name = "Form1";
             this.Text = "Quiplash Question Editor by WORM";
             this.Load += new System.EventHandler(this.Form1_Load);

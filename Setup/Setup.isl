@@ -4348,7 +4348,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[ProgramFilesFolder]WORM\QuipEdit.exe</td><td/></row>
 		<row><td>ProductCode</td><td>{550CE9B3-CFDC-4657-86CC-0CC54CA09B7F}</td><td/></row>
 		<row><td>ProductName</td><td>Quiplash Question Editor</td><td/></row>
-		<row><td>ProductVersion</td><td>1.3.0</td><td/></row>
+		<row><td>ProductVersion</td><td>1.3.1</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
