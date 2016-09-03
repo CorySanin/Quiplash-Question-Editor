@@ -37,11 +37,16 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSelNone = new System.Windows.Forms.Button();
+            this.importQQPDialog = new System.Windows.Forms.OpenFileDialog();
+            this.exportQQPDialog = new System.Windows.Forms.SaveFileDialog();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,13 +65,15 @@
             this.ListQuestionJet.FormattingEnabled = true;
             this.ListQuestionJet.Location = new System.Drawing.Point(12, 25);
             this.ListQuestionJet.Name = "ListQuestionJet";
+            this.ListQuestionJet.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListQuestionJet.Size = new System.Drawing.Size(600, 381);
             this.ListQuestionJet.TabIndex = 0;
+            this.ListQuestionJet.SelectedIndexChanged += new System.EventHandler(this.ListQuestionJet_SelectedIndexChanged);
             // 
             // BtnNew
             // 
             this.BtnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNew.Location = new System.Drawing.Point(537, 407);
+            this.BtnNew.Location = new System.Drawing.Point(537, 412);
             this.BtnNew.Name = "BtnNew";
             this.BtnNew.Size = new System.Drawing.Size(75, 23);
             this.BtnNew.TabIndex = 1;
@@ -77,7 +84,8 @@
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(456, 407);
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Location = new System.Drawing.Point(456, 412);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 2;
@@ -88,7 +96,7 @@
             // btnRemove
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(375, 407);
+            this.btnRemove.Location = new System.Drawing.Point(375, 412);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 3;
@@ -115,6 +123,8 @@
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
+            this.importToolStripMenuItem,
+            this.exportToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -125,15 +135,29 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "&Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Text = "&Import...";
+            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Text = "Expor&t...";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // toolStripDropDownButton3
@@ -172,11 +196,36 @@
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // btnSelNone
+            // 
+            this.btnSelNone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSelNone.Location = new System.Drawing.Point(12, 412);
+            this.btnSelNone.Name = "btnSelNone";
+            this.btnSelNone.Size = new System.Drawing.Size(75, 23);
+            this.btnSelNone.TabIndex = 5;
+            this.btnSelNone.Text = "Deselect";
+            this.btnSelNone.UseVisualStyleBackColor = true;
+            this.btnSelNone.Click += new System.EventHandler(this.btnSelNone_Click);
+            // 
+            // importQQPDialog
+            // 
+            this.importQQPDialog.DefaultExt = "qqp";
+            this.importQQPDialog.FileName = ".qqp";
+            this.importQQPDialog.Filter = "Quiplash Question Pack files|*.qqp|All files|*.*";
+            this.importQQPDialog.Title = "Import QQP file";
+            // 
+            // exportQQPDialog
+            // 
+            this.exportQQPDialog.DefaultExt = "qqp";
+            this.exportQQPDialog.FileName = ".qqp";
+            this.exportQQPDialog.Filter = "Quiplash Question Pack files|*.qqp|All files|*.*";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Controls.Add(this.btnSelNone);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnEdit);
@@ -209,6 +258,11 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
+        private System.Windows.Forms.Button btnSelNone;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog importQQPDialog;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog exportQQPDialog;
     }
 }
 

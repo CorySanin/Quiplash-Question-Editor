@@ -21,10 +21,11 @@ namespace Quiplash_Question_Editor
         /// sets rootPath to p
         /// </summary>
         /// <param name="p">Question.jet containing directory</param>
-        public newQuestion(string p)
+        /// <param name="iddef">The new question's default ID number</param>
+        public newQuestion(string p, int iddef)
         {
             InitializeComponent();
-
+            txtId.Text = iddef+"";
             rootPath = p;
         }
 
@@ -135,6 +136,7 @@ namespace Quiplash_Question_Editor
                 questionData.fields.Add(new Field() { t = "S", v = "", n = "Location" });
                 questionData.fields.Add(new Field() { t = "A", v = "kwresponse", n = "KeywordResponseAudio" });
                 questionData.fields.Add(new Field() { t = "A", v = "prompt", n = "PromptAudio" });
+                questionData.fields.Add(new Field() { t = "B", v = "Custom", n = boolText(true) });
 
                 qJetContent = new Content() { x = chkbxExplicit.Checked, id = int.Parse(txtId.Text), prompt = txtPrompt.Text };
 
@@ -162,7 +164,7 @@ namespace Quiplash_Question_Editor
         /// </summary>
         /// <param name="b">a boolean value</param>
         /// <returns>Wheter the input was "true" or "false" (as a string)</returns>
-        private string boolText(bool b)
+        public static string boolText(bool b)
         {
             if (b)
                 return "true";

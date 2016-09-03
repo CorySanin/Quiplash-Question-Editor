@@ -22,6 +22,7 @@ namespace Quiplash_Question_Editor
         private int LocationIndex;
         private int KeywordResponseAudioIndex;
         private int PromptAudioIndex;
+        private int CustomFlagIndex = -1;
         private string NewPromptAudio = "";
         private string NewKeywordAudio = "";
 
@@ -63,7 +64,7 @@ namespace Quiplash_Question_Editor
         }
 
         /// <summary>
-        /// Goes through the question's Data.jet to find the indexes for the difference types of variables
+        /// Goes through the question's Data.jet to find the indexes for the different types of variables
         /// There might be a better way of doing this, but I believe my way isn't bad
         /// </summary>
         private void getFieldIndexes()
@@ -87,6 +88,8 @@ namespace Quiplash_Question_Editor
                     KeywordResponseAudioIndex = i;
                 else if (name == "PromptAudio")
                     PromptAudioIndex = i;
+                else if (name == "Custom")
+                    CustomFlagIndex = i;
             }
         }
 
