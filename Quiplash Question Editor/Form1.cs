@@ -16,10 +16,12 @@ namespace Quiplash_Question_Editor
         private string questionPath;
         private questionJet questionIndex;
         private string lastSearchString = "";
+        private string[] param;
 
-        public Form1()
+        public Form1(string[] args)
         {
             InitializeComponent();
+            param = args;
         }
 
         /// <summary>
@@ -31,7 +33,34 @@ namespace Quiplash_Question_Editor
         {
             toolStrip1.ShowItemToolTips = false;
             this.Show();
-            open();
+            string importFName = "";
+            for (int i = 0; i < param.Length; i++)
+            {
+                try
+                {
+                    string ext = Path.GetExtension(param[i]);
+                    if (ext == ".jet")
+                        questionJetFilename = param[i];
+                    else if (ext == ".qqp")
+                        importFName = param[i];
+                }
+                catch
+                {
+
+                }
+            }
+            if (questionJetFilename == "" || questionJetFilename == null)
+                open();
+            else
+            {
+                questionPath = Path.GetDirectoryName(questionJetFilename);
+                openFile();
+            }
+
+            if(importFName != "")
+            {
+                importFile(importFName, Path.GetDirectoryName(importFName));
+            }
         }
 
         /// <summary>
@@ -133,11 +162,15 @@ namespace Quiplash_Question_Editor
         /// </summary>
         private void open()
         {
-            string questionJetFileContents = "";
             openFileDialog1.ShowDialog();
             questionJetFilename = openFileDialog1.FileName;
             questionPath = questionJetFilename.Replace(openFileDialog1.SafeFileName, "");
+            openFile();
+        }
 
+        private void openFile()
+        {
+            string questionJetFileContents = "";
             try
             {
                 using (StreamReader sr = new StreamReader(questionJetFilename))
@@ -153,7 +186,7 @@ namespace Quiplash_Question_Editor
                     ListQuestionJet.Items.Add(questionIndex.content.ToArray()[i].prompt);
                 }
 
-                if(!File.Exists(questionJetFilename+".bak"))
+                if (!File.Exists(questionJetFilename + ".bak"))
                     File.Copy(questionJetFilename, questionJetFilename + ".bak");
             }
             catch
@@ -274,84 +307,89 @@ namespace Quiplash_Question_Editor
         {
             if (questionJetFilename != "")
             {
-                string QQPFileContents = "";
                 importQQPDialog.ShowDialog();
                 string QQPFilename = importQQPDialog.FileName;
                 string QQPPath = QQPFilename.Replace(importQQPDialog.SafeFileName, "");
-                string QQDir = QQPPath + @"\" + "QQETEMP";
-                try
-                {
-                    //extracts the QQP
-                    using (ZipFile zip = ZipFile.Read(QQPFilename))
-                    {
-                        zip.ExtractAll(QQDir);
-                    }
-                    //reads the main file
-                    using (StreamReader sr = new StreamReader(QQDir + @"\" + "QQP.jet"))
-                    {
-                        QQPFileContents = QQPFileContents + sr.ReadToEnd() + " ";
-                    }
-
-                    QuiplashQuestionPack importQIndex = JsonConvert.DeserializeObject<QuiplashQuestionPack>(QQPFileContents);
-
-                    for (int i = 0; i < importQIndex.items.Count; i++)
-                    {
-                        //finds the next available filder
-                        int num = ListQuestionJet.Items.Count - 1;
-                        int index = 3000;
-                        if (num >= 0)
-                            index = questionIndex.content[num].id + 1;
-                        while(Directory.Exists(questionPath + "Question\\" + index))
-                        {
-                            index++;
-                        }
-
-                        //move audio files to the new folder
-                        Directory.CreateDirectory(questionPath + "Question\\" + index);
-                        File.Move(QQDir + @"\Question\" + i + @"\" + importQIndex.items[i].audio + ".mp3", questionPath + "Question\\" + index + @"\" + importQIndex.items[i].audio + ".mp3");
-                        if(importQIndex.items[i].jokeaudio != "" && importQIndex.items[i].jokeaudio != null)
-                            File.Move(QQDir + @"\Question\" + i + @"\" + importQIndex.items[i].jokeaudio + ".mp3", questionPath + "Question\\" + index + @"\" + importQIndex.items[i].jokeaudio + ".mp3");
-
-                        //create the files necessary for a new data.jet and an updated question.jet
-                        Content newContent = new Content();
-                        newContent.id = index;
-                        newContent.prompt = importQIndex.items[i].prompt;
-                        newContent.x = importQIndex.items[i].explicitq;
-
-                        bool hasjokeaudio = (importQIndex.items[i].jokekeys != "" && importQIndex.items[i].jokeaudio != "");
-
-                        dataJet questionData = new dataJet();
-                        questionData.fields = new List<Field>();
-                        questionData.fields.Add(new Field() { t = "B", v = newQuestion.boolText(hasjokeaudio), n = "HasJokeAudio" });
-                        questionData.fields.Add(new Field() { t = "S", v = importQIndex.items[i].jokekeys, n = "Keywords" });
-                        questionData.fields.Add(new Field() { t = "S", v = "", n = "Author" });
-                        questionData.fields.Add(new Field() { t = "S", v = importQIndex.items[i].jokeresponse, n = "KeywordResponseText" });
-                        questionData.fields.Add(new Field() { t = "S", v = importQIndex.items[i].prompt, n = "PromptText" });
-                        questionData.fields.Add(new Field() { t = "S", v = "", n = "Location" });
-                        questionData.fields.Add(new Field() { t = "A", v = importQIndex.items[i].jokeaudio, n = "KeywordResponseAudio" });
-                        questionData.fields.Add(new Field() { t = "A", v = importQIndex.items[i].audio, n = "PromptAudio" });
-                        questionData.fields.Add(new Field() { t = "B", v = newQuestion.boolText(true), n = "Custom" }); 
-
-                        string dataJet = JsonConvert.SerializeObject(questionData, Formatting.None);
-                        dataJet = unicodeInterface.replacePunctuation(dataJet);
-
-                        using (StreamWriter newTask = new StreamWriter(questionPath + "Question\\" + index + "\\data.jet", false))
-                        {
-                            newTask.WriteLine(dataJet);
-                        }
-
-                        questionIndex.content.Add(newContent);
-                        ListQuestionJet.Items.Add(newContent.prompt);
-                        saveQuestionJet();
-                    }
-                }
-                finally
-                {
-                    Directory.Delete(QQDir, true);
-                }
+                importFile(QQPFilename, QQPPath);
             }
             else
                 open();
+        }
+
+        private void importFile(string QQPFilename, string QQPPath)
+        {
+            string QQPFileContents = "";
+            string QQDir = QQPPath + @"\" + "QQETEMP";
+            try
+            {
+                //extracts the QQP
+                using (ZipFile zip = ZipFile.Read(QQPFilename))
+                {
+                    zip.ExtractAll(QQDir);
+                }
+                //reads the main file
+                using (StreamReader sr = new StreamReader(QQDir + @"\" + "QQP.jet"))
+                {
+                    QQPFileContents = QQPFileContents + sr.ReadToEnd() + " ";
+                }
+
+                QuiplashQuestionPack importQIndex = JsonConvert.DeserializeObject<QuiplashQuestionPack>(QQPFileContents);
+
+                for (int i = 0; i < importQIndex.items.Count; i++)
+                {
+                    //finds the next available filder
+                    int num = ListQuestionJet.Items.Count - 1;
+                    int index = 3000;
+                    if (num >= 0)
+                        index = questionIndex.content[num].id + 1;
+                    while (Directory.Exists(questionPath + "Question\\" + index))
+                    {
+                        index++;
+                    }
+
+                    //move audio files to the new folder
+                    Directory.CreateDirectory(questionPath + "Question\\" + index);
+                    File.Move(QQDir + @"\Question\" + i + @"\" + importQIndex.items[i].audio + ".mp3", questionPath + "Question\\" + index + @"\" + importQIndex.items[i].audio + ".mp3");
+                    if (importQIndex.items[i].jokeaudio != "" && importQIndex.items[i].jokeaudio != null)
+                        File.Move(QQDir + @"\Question\" + i + @"\" + importQIndex.items[i].jokeaudio + ".mp3", questionPath + "Question\\" + index + @"\" + importQIndex.items[i].jokeaudio + ".mp3");
+
+                    //create the files necessary for a new data.jet and an updated question.jet
+                    Content newContent = new Content();
+                    newContent.id = index;
+                    newContent.prompt = importQIndex.items[i].prompt;
+                    newContent.x = importQIndex.items[i].explicitq;
+
+                    bool hasjokeaudio = (importQIndex.items[i].jokekeys != "" && importQIndex.items[i].jokeaudio != "");
+
+                    dataJet questionData = new dataJet();
+                    questionData.fields = new List<Field>();
+                    questionData.fields.Add(new Field() { t = "B", v = newQuestion.boolText(hasjokeaudio), n = "HasJokeAudio" });
+                    questionData.fields.Add(new Field() { t = "S", v = importQIndex.items[i].jokekeys, n = "Keywords" });
+                    questionData.fields.Add(new Field() { t = "S", v = "", n = "Author" });
+                    questionData.fields.Add(new Field() { t = "S", v = importQIndex.items[i].jokeresponse, n = "KeywordResponseText" });
+                    questionData.fields.Add(new Field() { t = "S", v = importQIndex.items[i].prompt, n = "PromptText" });
+                    questionData.fields.Add(new Field() { t = "S", v = "", n = "Location" });
+                    questionData.fields.Add(new Field() { t = "A", v = importQIndex.items[i].jokeaudio, n = "KeywordResponseAudio" });
+                    questionData.fields.Add(new Field() { t = "A", v = importQIndex.items[i].audio, n = "PromptAudio" });
+                    questionData.fields.Add(new Field() { t = "B", v = newQuestion.boolText(true), n = "Custom" });
+
+                    string dataJet = JsonConvert.SerializeObject(questionData, Formatting.None);
+                    dataJet = unicodeInterface.replacePunctuation(dataJet);
+
+                    using (StreamWriter newTask = new StreamWriter(questionPath + "Question\\" + index + "\\data.jet", false))
+                    {
+                        newTask.WriteLine(dataJet);
+                    }
+
+                    questionIndex.content.Add(newContent);
+                    ListQuestionJet.Items.Add(newContent.prompt);
+                    saveQuestionJet();
+                }
+            }
+            finally
+            {
+                Directory.Delete(QQDir, true);
+            }
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)

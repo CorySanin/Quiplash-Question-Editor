@@ -341,6 +341,7 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{83512E2E-3D2D-45CD-B06C-BE261C763FFA}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>QuipEdit.exe</td><td>{2DC8A962-8432-41D4-8447-ED42FBE559F0}</td><td>WORM</td><td>2</td><td/><td>quipedit.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>QuipEdit.exe1</td><td>{709D70DD-F707-4A8C-A422-0B462E095C14}</td><td>INSTALLDIR</td><td>2</td><td/><td>quipedit.exe1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
@@ -1052,6 +1053,7 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>INSTALLDIR</td><td>QuipEdit.exe</td></row>
 		<row><td>INSTALLDIR</td><td>QuipEdit.exe1</td></row>
 		<row><td>WORM</td><td>QuipEdit.exe</td></row>
@@ -1869,6 +1871,7 @@
 	<table name="FeatureComponents">
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>AlwaysInstall</td><td>QuipEdit.exe</td></row>
 		<row><td>AlwaysInstall</td><td>QuipEdit.exe1</td></row>
 	</table>
@@ -1885,6 +1888,8 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
+		<row><td>jetfile.ico</td><td>ISX_DEFAULTCOMPONENT1</td><td>jetfile.ico</td><td>0</td><td/><td/><td/><td>1</td><td>F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\jetfile.ico</td><td>1</td><td/></row>
+		<row><td>qqpack.ico</td><td>ISX_DEFAULTCOMPONENT1</td><td>QQPack.ico</td><td>0</td><td/><td/><td/><td>1</td><td>F:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Quiplash Question Editor\QQPack.ico</td><td>1</td><td/></row>
 		<row><td>quipedit.exe</td><td>QuipEdit.exe</td><td>QuipEdit.exe</td><td>0</td><td/><td/><td/><td>1</td><td>f:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Build\QuipEdit.exe</td><td>1</td><td/></row>
 		<row><td>quipedit.exe1</td><td>QuipEdit.exe1</td><td>QuipEdit.exe</td><td>0</td><td/><td/><td/><td>1</td><td>f:\Users\Cory\OneDrive\Documents\Programming\Visual Studio\Quiplash Question Editor\Quiplash-Question-Editor\Build\QuipEdit.exe</td><td>1</td><td/></row>
 	</table>
@@ -1902,6 +1907,8 @@
 	<table name="ISAssistantTag">
 		<col key="yes" def="s72">Tag</col>
 		<col def="S255">Data</col>
+		<row><td>PROJECT_ASSISTANT_DEFAULT_FEATURE</td><td>AlwaysInstall</td></row>
+		<row><td>RegistryPageEnabled</td><td>Yes</td></row>
 	</table>
 
 	<table name="ISBillBoard">
@@ -2028,6 +2035,7 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_ED5ED25C_BEDF_4225_9F81_5322CEADBCF8_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>QuipEdit.exe</td><td/><td/><td>_F0848182_54F3_42F9_BF35_FACC8DABBF8A_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>QuipEdit.exe1</td><td/><td/><td>_67FA2FE1_CE7D_4AE1_B8F4_5A5914A0329B_FILTER</td><td/><td/><td/><td/></row>
 	</table>
@@ -3970,7 +3978,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{D4C59854-E174-4330-961E-34D1DE027B4A}</td></row>
 		<row><td>ISUSSignature</td><td>{8CF47B46-0BFB-4C8F-9711-71F82CA55E03}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewUpgradePaths,viewUpdateService,viewProject,viewUI,viewISToday,viewRelease,viewLearnMore</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewUpgradePaths,viewUpdateService,viewProject,viewUI,viewISToday,viewRelease,viewLearnMore,viewCustomActions</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4348,7 +4356,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[ProgramFilesFolder]WORM\QuipEdit.exe</td><td/></row>
 		<row><td>ProductCode</td><td>{550CE9B3-CFDC-4657-86CC-0CC54CA09B7F}</td><td/></row>
 		<row><td>ProductName</td><td>Quiplash Question Editor</td><td/></row>
-		<row><td>ProductVersion</td><td>2.0.0</td><td/></row>
+		<row><td>ProductVersion</td><td>2.1.0</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4417,6 +4425,15 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S0">Value</col>
 		<col def="s72">Component_</col>
 		<col def="I4">ISAttributes</col>
+		<row><td>Registry1</td><td>0</td><td>.qqp</td><td/><td>quiplashquestionedit.qqp</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry2</td><td>0</td><td>.jet</td><td/><td>quiplashquestionedit.jet</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry3</td><td>0</td><td>quiplashquestionedit.qqp</td><td/><td>Quiplash Question Pack</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry4</td><td>0</td><td>quiplashquestionedit.jet</td><td/><td>Quiplash Data File</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry5</td><td>0</td><td>quiplashquestionedit.qqp\shell</td><td/><td>Open</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry6</td><td>0</td><td>quiplashquestionedit.qqp\shell\Open\command</td><td/><td>"[INSTALLDIR]\QuipEdit.exe" "%1"</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry7</td><td>0</td><td>quiplashquestionedit.jet\shell\Edit\command</td><td/><td>"[INSTALLDIR]\QuipEdit.exe" "%1"</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry8</td><td>0</td><td>quiplashquestionedit.qqp\DefaultIcon</td><td/><td>"[INSTALLDIR]\QQPack.ico"</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
+		<row><td>Registry9</td><td>0</td><td>quiplashquestionedit.jet\DefaultIcon</td><td/><td>"[INSTALLDIR]\jetfile.ico"</td><td>ISX_DEFAULTCOMPONENT1</td><td>0</td></row>
 	</table>
 
 	<table name="RemoveFile">
