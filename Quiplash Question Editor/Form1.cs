@@ -57,7 +57,7 @@ namespace Quiplash_Question_Editor
                 openFile();
             }
 
-            if(importFName != "")
+            if(questionJetFilename != "" && questionJetFilename != null && importFName != "")
             {
                 importFile(importFName, Path.GetDirectoryName(importFName));
             }
