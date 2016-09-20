@@ -471,3 +471,4 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+.vs/Quiplash Question Editor/v14/.suo
