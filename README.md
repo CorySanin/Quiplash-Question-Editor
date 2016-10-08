@@ -8,6 +8,6 @@ Don't worry about messing up your Question.jet file, as Quiplash Question Editor
 
 ![capture](https://cloud.githubusercontent.com/assets/2897351/15756006/eb274550-28c4-11e6-99d6-60dff48e36b5.PNG)
 
-Like my work? I'd really appreciate it if you would [donate](paypal.me/Heckie) ♥
+Like my work? I'd really appreciate it if you would [donate](http://paypal.me/Heckie) 
 
 Something not right or you'd appreciate it if something were added? Submit to the issues section or contact me through [Twitter](https://www.twitter.com/coryz40)
